@@ -38,8 +38,8 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		isRunning = true;
 		addKeyListener(this);
-		player = new Player(100, HEIGHT - 5);
-		enemy = new Enemy(100, 0);
+		player = new Player((WIDTH / 2) - 20, HEIGHT - 5);
+		enemy = new Enemy((WIDTH / 2) - 20, 0);
 		ball = new Ball(100, HEIGHT / 2 - 1);
 		ui = new UserInterface(WIDTH, HEIGHT);
 		initFrame();
