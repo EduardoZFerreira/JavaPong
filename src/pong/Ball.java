@@ -10,11 +10,17 @@ public class Ball extends Entity{
 	public double dx, dy;
 	public double speed = 1.6;
 	
+	private String beepSoundLocation;
+	private SoundEffect se = new SoundEffect();
+	
 	public Ball(int x, int y) {
 		super(x, y);
 		WIDTH = 3;
 		HEIGHT = 3;	
 		setDirection();
+		
+		beepSoundLocation = ".//res//beep-07.wav";
+		se.setFile(beepSoundLocation);
 	}
 	
 	public void setDirection() {
@@ -41,13 +47,13 @@ public class Ball extends Entity{
 		Rectangle enemyBounds = new Rectangle((int)Game.enemy.x, (int)Game.enemy.y, Game.enemy.WIDTH, Game.enemy.HEIGHT);
 		
 		if(bounds.intersects(playerBounds)) {
-	        
+			se.play();
 			setDirection();
 			if(dy > 0) {
 				dy *= -1;
 			}	
 		} else if(bounds.intersects(enemyBounds)) {
-			
+			se.play();
 			setDirection();
 			if(dy < 0) {
 				dy *= -1;
