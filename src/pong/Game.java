@@ -20,6 +20,10 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 	public static int HEIGHT = 120;
 	public static int SCALE = 3;
 	
+	private String bgmLocation;
+	private SoundEffect bgm = new SoundEffect();
+	
+	
 	public int playerScore = 0;
 	public int enemyScore = 0;
 		
@@ -39,6 +43,9 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 		ball = new Ball(100, HEIGHT / 2 - 1);
 		ui = new UserInterface(WIDTH, HEIGHT);
 		initFrame();
+		bgmLocation = ".//res//bgm.wav";
+		bgm.setFile(bgmLocation);
+		
 	}
 	
 	public static void main(String[] args) {
@@ -60,6 +67,7 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 		thread = new Thread(this);
 		isRunning = true;
 		thread.start();
+		bgm.play();
 	}	
 	
 	public synchronized void stop() {
