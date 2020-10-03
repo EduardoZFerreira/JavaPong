@@ -1,7 +1,6 @@
 package pong;
 
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.util.Random;
 
 

@@ -28,6 +28,7 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 	public static Player player;
 	public static Enemy enemy;
 	public static Ball ball;
+	public static UserInterface ui;
 	
 	public Game() {
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -36,6 +37,7 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 		player = new Player(100, HEIGHT - 5);
 		enemy = new Enemy(100, 0);
 		ball = new Ball(100, HEIGHT / 2 - 1);
+		ui = new UserInterface(WIDTH, HEIGHT);
 		initFrame();
 	}
 	
@@ -89,6 +91,8 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 		player.render(g, Color.CYAN);
 		enemy.render(g, Color.RED);
 		ball.render(g, Color.YELLOW);
+		ui.render(g);
+		ui.renderScore(playerScore, enemyScore, g);
 		
 		g = bs.getDrawGraphics();
 		g.drawImage(layer, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
@@ -120,8 +124,6 @@ public class Game  extends Canvas implements Runnable, KeyListener{
 	}
 	
 	public void reset() {
-		System.out.println("Pontuação Jogador: " + playerScore);
-		System.out.println("Pontuação Inimigo: " + enemyScore);
 		player.reset();
 		enemy.reset();
 		ball.reset();
